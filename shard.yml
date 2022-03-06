@@ -1,0 +1,13 @@
+name: diml-lexer
+version: 0.1.0
+
+authors:
+  - Robert <16901597+aquaflamingo@users.noreply.github.com>
+
+targets:
+  diml-lexer:
+    main: src/diml-lexer.cr
+
+crystal: 1.2.1
+
+license: MIT
