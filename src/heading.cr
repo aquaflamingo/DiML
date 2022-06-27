@@ -1,5 +1,10 @@
-class Heading < Element
+class Heading < Keyword
 	 def initialize
-			@token = Token.new("q.")
+			@interpreted_value = "heading."
+			@markdown_value = "##"
 	 end
+
+   def render
+    raise ArgumentError.new("Not implemented")
+   end
 end

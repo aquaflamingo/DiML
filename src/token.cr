@@ -1,8 +1,14 @@
-class Token
-	 getter value: String
+require "./content.cr"
 
-	 # TODO: aliases
-	 def initialize(value: String)
-			@value = value
-	 end
+class Token
+  # Parses the individual token into its essential keyword or non-keyword (content element)
+  def parse(value : String)
+    if Keywords.is_kw?(value)
+      Keywords.find_klass(value)
+    else
+      Content.new(value)
+    end
+  end
 end
+
+

@@ -3,7 +3,7 @@ PROJECT=diml
 all: install build 
 
 build:
-	 @crystal build src/main.cr -o .bin/$(PROJECT)
+	 @crystal build src/main.cr -o bin/$(PROJECT)
 
 install:
 	@shards install

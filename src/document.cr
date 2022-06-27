@@ -1,15 +1,14 @@
 # Document is a tree 
 # Each tree node is an element
+require "./content_tree.cr"
+
 class Document 
-	 class << self
-			def load(path: String)
-						 content = File.read(path) 
+  def initialize(@content : ContentTree)
+  end
 
-						parse_tree(content)
-			end
+  def self.load(path : String)
+    c = File.read(path) 
 
-			private def parse_tree(raw: String)
-				 # TODO - Look ahead token parsing or just basic semi-colon splits?
-			end
-	 end
+    ContentTree::Parser.parse(c)
+  end
 end

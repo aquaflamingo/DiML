@@ -1,5 +1,10 @@
-class Section < Element
+class Section < Keyword
 	 def initialize
-			@token = Token.new("section.")
+			@interpreted_value = "section"
+      @markdown_value = "#"
 	 end
+
+   def render
+    raise ArgumentError.new("Not implemented")
+   end
 end
