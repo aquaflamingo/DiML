@@ -2,6 +2,10 @@
 abstract class Element
   abstract def render
 
+  def nestable?
+    true
+  end
+
   # TODO: should the element decide whether or not its a content or keyword and based on that instantiate the proper keyword type
 end
 

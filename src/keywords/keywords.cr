@@ -11,14 +11,23 @@ module Keywords
     End
   ]
 
-  def self.find_klass(content)
+  #
+  def self.build_from(content)
     found_klasses  = ALL.select do |kw|
       kw.try?(v)
     end
 
+
     raise ArgumentError.new("Provided content is not a keyword") if found_klasses.empty?
 
-    found_klasses.first
+    klass = found_klasses.first
+
+    # Split the content into two parts the keyword, and content.
+    # @Example: Q. headingvalue -> [Q., headingvalue]
+    _, remaining = content.split(klass.markup_prefix)
+
+    # Instantiate the keyword class with the content
+    klass.new(remaining.strip)
   end
 
   # 
