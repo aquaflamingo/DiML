@@ -1,11 +1,9 @@
 class Point < Keyword
-	 def initialize(@content : String)
-			@interpreted_value = "point."
-      @markup_prefix = "*"
-	 end
+    @@interpreted_value = "point."
+    @@markup_prefix = "*"
 
-   def nested?
-    true
-   end
+  def identify
+    "point"
+  end
 end
 

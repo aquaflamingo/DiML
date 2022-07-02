@@ -1,5 +1,7 @@
-require "./token.cr"
-require "./element.cr"
+require "./element_factory.cr"
+require "./keywords/section.cr"
+require "./keywords/point.cr"
+require "./keywords/heading.cr"
 
 class Parser
   def initialize(@raw_content : String) 
@@ -10,32 +12,34 @@ class Parser
 
     # Create new Content Tree
     ctree = ContentTree.new
-    ctree.content = Section.new("Title")
+    ctree.content = Root.new("")
     ctree.root!
     
     # Recursively build tree
-    tree = build_tree(basic_tokens, ctree)
+    tree = build_tree(ctree, basic_tokens)
 
     # TODO
   end
 
-  private def build_tree(ctree, tokens)
-# Rough idea:
-# For each elem, check if nestable. 
-# If not nestable, cut the section and feed to the recursive builder
-# |N|N|N|S|N|N|N|S|
-#
-
-    # Base case: if there are no nestable tokens 
+  private def build_tree(ctree : ContentTree, tokens : Array(String))
+    # Basic case: if there are no nestable tokens 
     if tokens.empty?
       return ctree
     end
 
-    elements = basic_tokens.each do |t|
-      element = ElementFactory.new_element(t)
+    next_token = tokens.first
 
-      if
-      ctree.add_child(element)
+    element = ElementFactory.new_element(next_token)
+
+    puts "next token is #{next_token}"
+
+    if element.identify == "section"
+      puts "Element is Section"
+    elsif element.identify == "heading"
+      puts "Element is Heading"
+    else
+      puts element
+      puts "Element is Other"
     end
 
     # Algo (Parsing and Tokenizing):
@@ -46,5 +50,6 @@ class Parser
     #     2.b With the created element append to the tree and dig further to see how to continue building the tree
     #
     # TODO: finish algorithm
+    return ctree
   end
 end

@@ -1,5 +1,6 @@
 # Document is a tree 
 # Each tree node is an element
+require "./parser.cr"
 require "./content_tree.cr"
 
 class Document 
@@ -9,6 +10,7 @@ class Document
   def self.load(path : String)
     c = File.read(path) 
 
-    ContentTree::Parser.parse(c)
+    p = Parser.new(c)
+    p.parse
   end
 end

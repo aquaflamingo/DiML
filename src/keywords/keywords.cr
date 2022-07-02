@@ -1,20 +1,18 @@
-require_relative './heading.cr'
-require_relative './section.cr'
-require_relative './point.cr'
-require_relative './end.cr'
+require "./heading.cr"
+require "./section.cr"
+require "./point.cr"
 
 module Keywords
   ALL = [
     Heading,
     Section,
     Point,
-    End
   ]
 
   #
   def self.build_from(content)
     found_klasses  = ALL.select do |kw|
-      kw.try?(v)
+      kw.try(content)
     end
 
 
@@ -33,9 +31,9 @@ module Keywords
   # 
   # Returns whether or not the supplied value is a keyword
   #
-  def self.is_kw?(v: String)
-    ALL.select do |kw|
-      kw.try?(v)
+  def self.is_kw?(v : String)
+    !ALL.select do |kw|
+      kw.try(v)
     end.empty?
   end
 end

@@ -1,6 +1,10 @@
+require "../keyword.cr"
+
 class Heading < Keyword
-	 def initialize(@content : String)
-			@interpreted_value = "heading."
-			@markup_prefix = "##"
-	 end
+  @@interpreted_value = "heading."
+  @@markup_prefix = "##"
+
+  def identify
+    "heading"
+  end
 end

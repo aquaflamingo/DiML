@@ -1,15 +1,18 @@
 require "./element.cr"
+require "./root.cr"
+
 #
 # Basic multi child Tree datastructure
 #
 class ContentTree
   getter children : Array(ContentTree)
-  getter parent : ContentTree
-  property content : Element
+  getter parent : ContentTree?
+  property content : Element?
 
   def initialize
-    @children  = [] of Element
+    @children  = [] of ContentTree
     @parent  = nil
+    @content  = nil
   end
 
   def add_child(child : ContentTree)

@@ -3,18 +3,39 @@
 # Example: "section"
 require "./element.cr"
 
-abstract class Keyword < Element
-	 getter interpreted_value: String
-	 getter markup_prefix: String
-	 getter content: String
+class Keyword < Element
+   @@interpreted_value : String?
+   @@markup_prefix : String?
 
-   def render
-    "#{markup_prefix} #{content}"
+   getter content : String
+
+   def initialize(@content : String)
    end
 
-   def self.try(v: String)
+   def identify
+    "nil"
+   end
+
+   def self.interpreted_value : String
+    @@interpreted_value.not_nil!
+   end
+
+   def self.markup_prefix : String
+    @@markup_prefix.not_nil!
+   end
+
+   def render
+    "#{@@markup_prefix} #{@content}"
+   end
+
+   def self.try(v : String)
+    puts "inside try"
+    puts "v: #{v}"
+    puts "v start with #{v.starts_with?(@@interpreted_value.not_nil!)}"
     # TODO: add more intelligence to this
     # i.e. not just starting with
-    v.starts_with?(@interpreted_value)
+    return false if v.nil?
+
+    v.starts_with?(@@interpreted_value.not_nil!)
    end
 end

@@ -1,10 +1,10 @@
-class Section < Keyword
-	 def initialize(@content : String)
-			@interpreted_value = "section"
-      @markup_prefix = "#"
-	 end
+require "../keyword.cr"
 
-   def nestable?
-    false
-   end
+class Section < Keyword
+  @@interpreted_value = "section"
+  @@markup_prefix = "#"
+
+  def identify
+    "section"
+  end
 end
