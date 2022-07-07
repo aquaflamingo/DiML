@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-require "../keyword"
+require_relative "../keyword"
 
 class Point < Keyword
-  @@interpreted_value = "point."
-  @@markup_prefix = "*"
+  extend Keyword::ClassMethods
 
-  def identify
-    "point"
-  end
+  def_interpreted_value "point."
+  def_markup_prefix "#"
 end

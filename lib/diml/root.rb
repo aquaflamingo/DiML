@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "./keyword"
+require_relative "./keyword"
 
 class Root < Keyword
   attr_reader :content

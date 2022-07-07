@@ -2,8 +2,8 @@
 
 # Document is a tree
 # Each tree node is an element
-require "./parser"
-require "./content_tree"
+require_relative "./parser"
+require_relative "./content_tree"
 
 class Document
   def initialize(content)

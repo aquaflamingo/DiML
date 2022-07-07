@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-require "./element"
-require "./root"
+require_relative "./element"
+require_relative "./root"
 
 #
 # Basic multi child Tree datastructure
 #
 class ContentTree
   # Element
-  attr_accesor :content
+  attr_accessor :content
   # ContentTree, Array<ContentTree>
   attr_reader :parent, :child
 

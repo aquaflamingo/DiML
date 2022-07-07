@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "./content"
-require "./keywords/keywords"
+require_relative "./content"
+require_relative "./keywords/keywords"
 
 # ContentElement is a concrete implementation of Element
 # It is used in conjunction with a ContentTree and is renderable

@@ -7,5 +7,4 @@ class Element
   end
 
   def render; end
-  def identify; end
 end

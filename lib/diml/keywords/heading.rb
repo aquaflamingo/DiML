@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-require "../keyword"
+require_relative "../keyword"
 
 class Heading < Keyword
-  @@interpreted_value = "heading."
-  @@markup_prefix = "##"
+  extend Keyword::ClassMethods
 
-  def identify
-    "heading"
-  end
+  def_interpreted_value "heading."
+  def_markup_prefix "##"
 end

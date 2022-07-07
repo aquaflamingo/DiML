@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require "./heading"
-require "./section"
-require "./point"
+require_relative "./heading"
+require_relative "./section"
+require_relative "./point"
 
 module Keywords
   ALL = [
@@ -22,10 +22,15 @@ module Keywords
 
     # Split the content into two parts the keyword, and content.
     # @Example: Q. headingvalue -> [Q., headingvalue]
-    _, remaining = content.split(klass.markup_prefix)
+    _, remaining = content.split(klass.interpreted_value)
 
+    stripped = if remaining.nil? || remaining.empty?
+                  ""
+               else
+                  remaining.strip
+               end
     # Instantiate the keyword class with the content
-    klass.new(remaining.strip)
+    klass.new(stripped)
   end
 
   #

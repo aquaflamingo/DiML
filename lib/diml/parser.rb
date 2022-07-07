@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require "./element_factory"
-require "./keywords/section"
-require "./keywords/point"
-require "./keywords/heading"
+require_relative "./element_factory"
+require_relative "./keywords/section"
+require_relative "./keywords/point"
+require_relative "./keywords/heading"
 
 class Parser
   def initialize(raw_content)
@@ -36,16 +36,19 @@ class Parser
 
     puts "next token is #{next_token}"
 
-    case element.identify
-    when "section"
+    case element.class.name
+    when Section.name
       puts "Element is Section"
-    when "heading"
+    when Heading.name
       puts "Element is Heading"
+    when Point.name
+      puts "Element is Point"
     else
-      puts element
-      puts "Element is Other"
+      puts "Element is Content"
     end
 
+    binding.pry
+    puts element
     # Algo (Parsing and Tokenizing):
     #   1. Tokenize the elements based on splitting by semi colons
     #   2. For each token

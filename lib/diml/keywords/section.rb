@@ -1,12 +1,10 @@
 # frozen_string_literal: true
 
-require "../keyword"
+require_relative "../keyword"
 
 class Section < Keyword
-  @@interpreted_value = "section"
-  @@markup_prefix = "#"
+  extend Keyword::ClassMethods
 
-  def identify
-    "section"
-  end
+  def_interpreted_value "section."
+  def_markup_prefix "#"
 end

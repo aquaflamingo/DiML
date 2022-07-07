@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "./document"
+require_relative "./document"
 
 module Diml
   VERSION = "0.1.0"
