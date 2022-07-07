@@ -10,7 +10,7 @@ class ContentTree
   # Element
   attr_accessor :content, :parent
   # ContentTree, Array<ContentTree>
-  attr_reader :child
+  attr_reader :children
 
   def initialize
     @children = []
@@ -19,7 +19,7 @@ class ContentTree
   end
 
   def add_child(child)
-    child.parent = child
+    child.parent = self
     @children << child
   end
 

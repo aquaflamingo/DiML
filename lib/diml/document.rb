@@ -14,6 +14,7 @@ class Document
     c = File.read(path)
 
     p = Parser.new(c)
+    binding.pry
     p.parse
   end
 end
