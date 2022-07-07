@@ -38,25 +38,54 @@ class Parser
 
     case element.class.name
     when Section.name
-      puts "Element is Section"
+      if ctree.root?
+        # Sections can only belong as children to the root. 
+        add_to_tree(ctree, element)
+      else 
+        # Continue to traverse upwards until you find the root
+        ancestor = ctree.parent
+        ancestor = ancestor.parent until ancestor.root?
+
+        # Ancestor is root. Insert this section.
+        child = ContentTree.new
+        child.parent = ancestor
+        child.content = element
+        ancestor.add_child(child)
+      end
     when Heading.name
-      puts "Element is Heading"
+      if ctree.content.instance_of? Section
+        # Headings can only belong to sections
+        add_to_tree(ctree, element)
+      else
+        ancestor = ctree.parent
+        ancestor = ancestor.parent until ancestor.content.instance_of? Section
+
+        # Ancestor is root. Insert this section.
+        add_to_tree(ancestor, element)
+      end
     when Point.name
-      puts "Element is Point"
+      if ctree.content.instance_of? Heading
+        # Headings can only belong to sections
+        add_to_tree(ctree, element)
+      else
+        ancestor = ctree.parent
+        ancestor = ancestor.parent until ancestor.content.instance_of? Heading
+
+        # Ancestor is root. Insert this section.
+        add_to_tree(ancestor, element)
+      end
     else
-      puts "Element is Content"
+      # FIXME: what to do with content?
     end
 
     binding.pry
-    puts element
-    # Algo (Parsing and Tokenizing):
-    #   1. Tokenize the elements based on splitting by semi colons
-    #   2. For each token
-    #     2.a Instantiate an element
-    #       - The element determines what type of class to instantiate under the hood
-    #     2.b With the created element append to the tree and dig further to see how to continue building the tree
-    #
-    # TODO: finish algorithm
     ctree
+  end
+
+  def add_to_tree(tree, child_element)
+    child = ContentTree.new
+    child.parent = tree
+    child.content = child_element
+    tree.add_child(child)
   end
 end

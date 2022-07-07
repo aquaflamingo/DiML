@@ -8,9 +8,9 @@ require_relative "./root"
 #
 class ContentTree
   # Element
-  attr_accessor :content
+  attr_accessor :content, :parent
   # ContentTree, Array<ContentTree>
-  attr_reader :parent, :child
+  attr_reader :child
 
   def initialize
     @children = []
@@ -28,7 +28,7 @@ class ContentTree
   end
 
   def root?
-    !@parent.present?
+    @parent.nil?
   end
 
   def has_children?
