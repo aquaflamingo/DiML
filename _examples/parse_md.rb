@@ -27,4 +27,12 @@ OptionParser.new do |parser|
   end
 end.parse!
 
-puts Diml.parse(opts[:input])
+def diml_to_md(input)
+  doc = Diml::Document.load(input)
+
+  formatter = Diml::Formatter.new(doc, :markdown)
+
+  formatter.format.string
+end
+
+puts diml_to_md(opts[:input])
