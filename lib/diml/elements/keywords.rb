@@ -11,6 +11,9 @@ module Keywords
     Point
   ].freeze
 
+  # 
+  # Factory method to create a keyword from raw content 
+  #
   def self.build_from(content)
     found_klasses = ALL.select do |kw|
       kw.try(content)

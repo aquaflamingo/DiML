@@ -1,15 +1,18 @@
 # frozen_string_literal: true
 
-require_relative "./element_factory"
-require_relative "./keywords/section"
-require_relative "./keywords/point"
-require_relative "./keywords/heading"
+require_relative "../elements/factory.rb"
+require_relative "../elements/section"
+require_relative "../elements/point"
+require_relative "../elements/heading"
 
+# Basic document parser
 class Parser
   def initialize(raw_content)
     @raw_content = raw_content
   end
 
+  # Parses the raw content for a DIML document into
+  # the internal representation.
   def parse
     basic_tokens = @raw_content.split(";")
 
@@ -18,9 +21,9 @@ class Parser
     ctree.content = Root.new("")
     ctree.root!
 
-    # Recursively build tree
     tree = build_tree(ctree, basic_tokens)
 
+    # Return the root not the last value
     t = tree
     t = t.parent until t.root?
     t
@@ -28,6 +31,7 @@ class Parser
 
   private
 
+  # Recursive content tree builder
   def build_tree(ctree, tokens)
     # Basic case: if there are no nestable tokens
     return ctree if tokens.empty?
@@ -36,14 +40,14 @@ class Parser
     next_token = tokens.first.strip
     tokens = tokens.drop(1)
 
-    element = ElementFactory.new_element(next_token)
+    # Create a new element
+    element = Factory.new_element(next_token)
 
     case element.class.name
     when Section.name
       if ctree.root?
         # Sections can only belong as children to the root. 
         child = add_to_tree(ctree, element)
-        build_tree(child, tokens)
       else 
         # Continue to traverse upwards until you find the root
         ancestor = ctree.parent
@@ -51,41 +55,41 @@ class Parser
 
         # Ancestor is root. Insert this section.
         child = add_to_tree(ancestor, element)
-        build_tree(child, tokens)
       end
+
+      build_tree(child, tokens)
     when Heading.name
       if ctree.content.instance_of? Section
         # Headings can only belong to sections
         child = add_to_tree(ctree, element)
-        build_tree(child, tokens)
       else
         ancestor = ctree.parent
         ancestor = ancestor.parent until ancestor.content.instance_of? Section
 
         # Ancestor is root. Insert this section.
         child = add_to_tree(ancestor, element)
-        build_tree(child, tokens)
       end
+
+      build_tree(child, tokens)
     when Point.name
       if ctree.content.instance_of? Heading
         # Headings can only belong to sections
         child = add_to_tree(ctree, element)
-        build_tree(child, tokens)
       else
         ancestor = ctree.parent
         ancestor = ancestor.parent until ancestor.content.instance_of? Heading
 
         # Ancestor is root. Insert this section.
         child = add_to_tree(ancestor, element)
-        build_tree(child, tokens)
       end
-    else
-      # FIXME: what to do with content?
+      
+      build_tree(child, tokens)
     end
 
     ctree
   end
 
+  # Helper method to create and add a new element to a content tree
   def add_to_tree(tree, child_element)
     child = ContentTree.new
     child.parent = tree

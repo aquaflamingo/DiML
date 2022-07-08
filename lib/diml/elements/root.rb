@@ -2,8 +2,9 @@
 
 require_relative "./keyword"
 
+# Root is a special element that the DIML document does not specify
+# It is used to start the content tree
 class Root < Keyword
-  # Root is a special keyword that the DIML document does not specify, but is used to start the tree
   def virtual?
     true
   end

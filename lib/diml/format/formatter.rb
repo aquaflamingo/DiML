@@ -1,11 +1,8 @@
 require 'stringio'
-require_relative '../content'
-require_relative '../keywords/section'
-require_relative '../keywords/heading'
-require_relative '../keywords/point'
+
 require_relative './markdown.rb'
 
-module Format
+module Diml
   # Main Formatting class responsible for traversing the document content 
   # tree and rendering according to the strategy
   class Formatter

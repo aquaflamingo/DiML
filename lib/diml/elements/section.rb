@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "../keyword"
+require_relative "./keyword"
 
 class Section < Keyword
   extend Keyword::ClassMethods

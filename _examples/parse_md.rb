@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "optionparser"
-require_relative "./diml"
+require_relative "../lib/diml"
 
 opts = {}
 

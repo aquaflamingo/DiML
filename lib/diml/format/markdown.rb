@@ -1,3 +1,9 @@
+require_relative '../elements/point'
+require_relative '../elements/heading'
+require_relative '../elements/section'
+require_relative '../elements/root'
+require_relative '../elements/content'
+
 module Format
   class Markdown
     # Maintains a map to conserve the translation values 
