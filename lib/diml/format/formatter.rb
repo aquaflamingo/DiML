@@ -1,9 +1,11 @@
-require 'stringio'
+# frozen_string_literal: true
 
-require_relative './markdown.rb'
+require "stringio"
+
+require_relative "./markdown"
 
 module Diml
-  # Main Formatting class responsible for traversing the document content 
+  # Main Formatting class responsible for traversing the document content
   # tree and rendering according to the strategy
   class Formatter
     # Decorator class for basic content
@@ -15,26 +17,23 @@ module Diml
       @decorator = select_decorator(strategy)
     end
 
-    # Creates a plain string of markdown 
+    # Creates a plain string of markdown
     # For use by client to save as a file
     # if chosen.
     def format
       content_tree = @doc.content
 
       # If the root has no children just render an empty string
-      if !content_tree.root?
-        raise ArgumentError, "Document is invalid: no root found for content tree" 
-      end
+      raise ArgumentError, "Document is invalid: no root found for content tree" unless content_tree.root?
 
-      if !content_tree.has_children?
-        raise ArgumentError, "Document is invalid: no content found" 
-      end
+      raise ArgumentError, "Document is invalid: no content found" unless content_tree.has_children?
 
       io = StringIO.new
       recursive_render(content_tree, io)
     end
 
     private
+
     def recursive_render(tree, doc_builder)
       # Recursive Render
       #   Start at root element
@@ -59,18 +58,18 @@ module Diml
         db = recursive_render(c, db)
       end
 
-      return db
+      db
     end
 
-    # 
-    # Write the content element to the document after decorating it 
+    #
+    # Write the content element to the document after decorating it
     #
     # Currently only supports Markdown format
     #
     def write_to_document(builder, element)
       builder.puts(@decorator.render(element)) unless element.virtual?
 
-      return builder
+      builder
     end
 
     def select_decorator(strategy)

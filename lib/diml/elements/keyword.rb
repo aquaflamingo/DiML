@@ -3,9 +3,9 @@
 # A Keyword is a special word in the lexicon of DiML.
 # A Keyword is distinct from raw content
 # Example: "section"
-require 'pry'
+require "pry"
 
-class Keyword 
+class Keyword
   attr_reader :content
 
   def initialize(content)
@@ -20,7 +20,7 @@ class Keyword
 
   module ClassMethods
     def def_token(value)
-      define_singleton_method('token') { value }
+      define_singleton_method("token") { value }
     end
 
     def try(v)

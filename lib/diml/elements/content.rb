@@ -2,7 +2,7 @@
 
 # Content is a basic class that represents a non-keyword value
 #
-class Content 
+class Content
   attr_reader :content
 
   def initialize(value)

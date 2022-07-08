@@ -20,7 +20,11 @@ Or install it yourself as:
 
 ## Usage
 
+You can run one of the examples in the `examples` directory to see what it looks like:
 
+```bash
+ruby examples/parse_md.rb -f examples/easy.diml
+```
 
 ## Development
 

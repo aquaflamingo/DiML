@@ -6,6 +6,7 @@ require_relative "../elements/point"
 require_relative "../elements/heading"
 
 # Basic document parser
+module Diml
 class Parser
   def initialize(raw_content)
     @raw_content = raw_content
@@ -98,4 +99,5 @@ class Parser
 
     child
   end
+end
 end

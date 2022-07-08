@@ -11,8 +11,8 @@ module Keywords
     Point
   ].freeze
 
-  # 
-  # Factory method to create a keyword from raw content 
+  #
+  # Factory method to create a keyword from raw content
   #
   def self.build_from(content)
     found_klasses = ALL.select do |kw|
@@ -28,9 +28,9 @@ module Keywords
     _, remaining = content.split(klass.token)
 
     stripped = if remaining.nil? || remaining.empty?
-                  ""
+                 ""
                else
-                  remaining.strip
+                 remaining.strip
                end
     # Instantiate the keyword class with the content
     klass.new(stripped)
