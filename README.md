@@ -1,6 +1,6 @@
 # Diml
 
-Prototype Dictation Markup Language
+Prototype [Dictation Markup Language](https://github.com/aquaflamingo/random-ideas/issues/6)
 
 ## Installation
 
@@ -20,7 +20,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+FIXME:
 
 ## Development
 
