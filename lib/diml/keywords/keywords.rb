@@ -22,7 +22,7 @@ module Keywords
 
     # Split the content into two parts the keyword, and content.
     # @Example: Q. headingvalue -> [Q., headingvalue]
-    _, remaining = content.split(klass.interpreted_value)
+    _, remaining = content.split(klass.token)
 
     stripped = if remaining.nil? || remaining.empty?
                   ""

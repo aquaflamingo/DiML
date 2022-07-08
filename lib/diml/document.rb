@@ -6,14 +6,15 @@ require_relative "./parser"
 require_relative "./content_tree"
 
 class Document
+  attr_reader :content
+
   def initialize(content_tree)
-    @tree = content_tree
+    @content = content_tree
   end
 
   def self.load(path)
     c = File.read(path)
 
-    p = Parser.new(c)
-    p.parse
+    new(Parser.new(c).parse)
   end
 end

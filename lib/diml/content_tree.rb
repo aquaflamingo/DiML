@@ -7,7 +7,7 @@ require_relative "./root"
 # Basic multi child Tree datastructure
 #
 class ContentTree
-  # Element
+  # Elements
   attr_accessor :content, :parent
   # ContentTree, Array<ContentTree>
   attr_reader :children

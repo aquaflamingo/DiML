@@ -3,7 +3,7 @@
 require_relative "./content"
 require_relative "./keywords/keywords"
 
-# ContentElement is a concrete implementation of Element
+# Element is a concrete implementation of Element
 # It is used in conjunction with a ContentTree and is renderable
 class ElementFactory
   # Factory method for creating the appropriate class under the hood via the token

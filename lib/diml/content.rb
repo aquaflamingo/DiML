@@ -1,17 +1,11 @@
 # frozen_string_literal: true
 
 # Content is a basic class that represents a non-keyword value
-
-require_relative "./element"
-
-class Content < Element
-  attr_reader :value
+# FIXME: move to grammar folder
+class Content 
+  attr_reader :content
 
   def initialize(value)
-    @value = value
-  end
-
-  def render
-    raise ArgumentError, "not implemented"
+    @content = value
   end
 end

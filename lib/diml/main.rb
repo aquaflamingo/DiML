@@ -27,4 +27,4 @@ OptionParser.new do |parser|
   end
 end.parse!
 
-Diml.parse(opts[:input])
+puts Diml.parse(opts[:input])
