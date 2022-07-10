@@ -1,7 +1,3 @@
-# Diml
-
-Prototype [Dictation Markup Language](https://github.com/aquaflamingo/random-ideas/issues/6)
-
 ## Specification
 A `diml` document provides a simple markup format for dictating notes in a way to preserve formatting for transformation to a presentable format (e.g. markdown). An example of DiML is below:
 
@@ -48,40 +44,3 @@ A `Heading` can have 1 to _n_ child `Point` elements.
 
 ### Points
 A `Point` can only be a child under a `Heading`. 
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'diml'
-```
-
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install diml
-
-## Usage
-Assuming you have a `.diml` file according to the specification, you can copy the example of parsing `diml` to `markdown` in the example file:
-
-```bash
-ruby examples/parse_md.rb -f examples/easy.diml
-```
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/diml.
-
-## License
-
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
