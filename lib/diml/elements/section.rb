@@ -5,5 +5,5 @@ require_relative "./keyword"
 class Section < Keyword
   extend Keyword::ClassMethods
 
-  def_token "section."
+  def_token "s."
 end

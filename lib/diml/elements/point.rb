@@ -5,5 +5,5 @@ require_relative "./keyword"
 class Point < Keyword
   extend Keyword::ClassMethods
 
-  def_token "point."
+  def_token "p."
 end

@@ -5,5 +5,5 @@ require_relative "./keyword"
 class Heading < Keyword
   extend Keyword::ClassMethods
 
-  def_token "heading."
+  def_token "h."
 end
