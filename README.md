@@ -6,7 +6,7 @@ Prototype [Dictation Markup Language](https://github.com/aquaflamingo/random-ide
 A `diml` document provides a simple markup format for dictating notes in a way to preserve formatting for transformation to a presentable format (e.g. markdown). An example of DiML is below:
 
 ```
-section. School Diary; heading. My First Day At School; point. I went to the lunch room; point. I went to the class room; point. I went to the nurse's room; heading. My Second Day At School; point. I went to the drama room; point. I went to the clown room;
+s. School Diary; h. My First Day At School; p. I went to the lunch room; p. I went to the class room; p. I went to the nurse's room; h. My Second Day At School; p. I went to the drama room; p. I went to the clown room;
 ```
 
 As you can see the above document isn't formatted but has the necessary keyword to parse the content and organize it into the format desired. This is helpful in the case of transcription of hand written notes via dictation.
@@ -14,7 +14,7 @@ As you can see the above document isn't formatted but has the necessary keyword 
 See originating idea here: https://github.com/aquaflamingo/random-ideas/issues/6
 
 ## DiML document
-A DiML document is a Tree data structure composed of _n_ children with at most height of 3 organized in a hierarchy: Section > Heading > Point.
+A DiML document is a Tree data structure composed of _n_ children with at most height of 3 organized in a hierarchy: Section > Heading > p.
 
 Each node in the tree must be one of these elements described below.
 

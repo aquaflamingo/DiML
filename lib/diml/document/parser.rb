@@ -54,7 +54,7 @@ class Parser
         ancestor = ctree.parent
         ancestor = ancestor.parent until ancestor.root?
 
-        # Ancestor is root. Insert this section.
+        # Ancestor is root. Insert this s.
         child = add_to_tree(ancestor, element)
       end
 
@@ -67,7 +67,7 @@ class Parser
         ancestor = ctree.parent
         ancestor = ancestor.parent until ancestor.content.instance_of? Section
 
-        # Ancestor is root. Insert this section.
+        # Ancestor is root. Insert this s.
         child = add_to_tree(ancestor, element)
       end
 
@@ -80,7 +80,7 @@ class Parser
         ancestor = ctree.parent
         ancestor = ancestor.parent until ancestor.content.instance_of? Heading
 
-        # Ancestor is root. Insert this section.
+        # Ancestor is root. Insert this s.
         child = add_to_tree(ancestor, element)
       end
       
