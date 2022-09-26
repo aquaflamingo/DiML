@@ -9,6 +9,18 @@ A `diml` document provides a simple markup format for dictating notes in a way t
 section. School Diary; heading. My First Day At School; point. I went to the lunch room; point. I went to the class room; point. I went to the nurse's room; heading. My Second Day At School; point. I went to the drama room; point. I went to the clown room;
 ```
 
+Transcribes to:
+```markdown
+# School Diary
+## My First Day At School
+* I went to the lunch room
+* I went to the class room
+* I went to the nurse's room
+## My Second Day At School
+* I went to the drama room
+* I went to the clown room
+```
+
 As you can see the above document isn't formatted but has the necessary keyword to parse the content and organize it into the format desired. This is helpful in the case of transcription of hand written notes via dictation.
 
 See originating idea here: https://github.com/aquaflamingo/random-ideas/issues/6
