@@ -28,7 +28,12 @@ OptionParser.new do |parser|
 end.parse!
 
 def diml_to_md(input)
-  doc = Diml::Document.load(input)
+  begin
+    doc = Diml::Document.load(input)
+  rescue => e
+    puts "failed to parse: #{e.message}"
+    exit 1
+  end
 
   formatter = Diml::Formatter.new(doc, :markdown)
 
