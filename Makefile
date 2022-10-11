@@ -6,6 +6,9 @@ console:
 setup:
 	@bundle exec bin/setup
 
+build:
+	@bundle exec rake build
+
 install:
 	@bundle exec rake install
 
